@@ -100,4 +100,4 @@ git reset --hard <commit-hash>
 ```
 Again, commit-hash can be retrieved with git log
 
-[Back to top](#simple-git-commands-list)
+[Back to top](#basic-git-commands)
