@@ -14,7 +14,9 @@
     - [*Creating Branches*](#creating-branches)
     - [*Viewing Branch Differences*](#viewing-branch-differences)
     - [*Merging Branches*](#merging-branches)
+    - [*Renaming Branches*](#renaming-branches)
     - [*Resetting Branches*](#resetting-branches)
+  - [**Handling Gitignore Issues**](#handling-gitignore-issues)
 
 ## **Initializing Git**
 To initialize git in a project directory (will start version control)
@@ -93,11 +95,28 @@ git checkout <target-branch-name>
 # Merge the other branch into your current branch
 git merge <source-branch-name>
 ```
+### *Renaming Branches*
+To rename the currently selected branch:
+```
+git branch -m <new-name>
+```
+To rename a specific branch:
+```
+git branch -m <old-name> <new-name>
+```
 ### *Resetting Branches*
 To reset branches to a specific commit state (dangerous):
 ```
 git reset --hard <commit-hash>
 ```
 Again, commit-hash can be retrieved with git log
+## **Handling Gitignore Issues**
+If the gitignore file does not work/is not ignoring the files in the gitignore, it most likely means that those files are already being tracked by git. So, you need to remove the cached files from the git index:
+```
+# Remove a single file from the Git index
+git rm --cached <file>
 
+# Remove all files in a directory from the Git index
+git rm --cached -r <directory>
+```
 [Back to top](#basic-git-commands)
