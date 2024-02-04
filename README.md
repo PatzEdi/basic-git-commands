@@ -16,6 +16,7 @@
     - [*Merging Branches*](#merging-branches)
     - [*Renaming Branches*](#renaming-branches)
     - [*Resetting Branches*](#resetting-branches)
+    - [*Deleting Branches*](#deleting-branches)
   - [**Handling Gitignore Issues**](#handling-gitignore-issues)
 
 ## **Initializing Git**
@@ -110,6 +111,14 @@ To reset branches to a specific commit state (dangerous):
 git reset --hard <commit-hash>
 ```
 Again, commit-hash can be retrieved with git log
+### *Deleting Branches*
+```
+# For a branch that has been merged
+git branch -d branch_name
+
+# For a branch that has not been merged
+git branch -D branch_name
+```
 ## **Handling Gitignore Issues**
 If the gitignore file does not work/is not ignoring the files in the gitignore, it most likely means that those files are already being tracked by git. So, you need to remove the cached files from the git index:
 ```
