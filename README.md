@@ -16,8 +16,10 @@
     - [*Merging Branches*](#merging-branches)
     - [*Renaming Branches*](#renaming-branches)
     - [*Resetting Branches*](#resetting-branches)
+      - [*Resetting a Branch on Origin*](#resetting-a-branch-on-origin)
     - [*Deleting Branches*](#deleting-branches)
-  - [**Handling Gitignore Issues**](#handling-gitignore-issues)
+- [Managing Pull Requests](#managing-pull-requests)
+- [**Handling Gitignore Issues**](#handling-gitignore-issues)
 
 ## **Initializing Git**
 To initialize git in a project directory (will start version control)
@@ -111,6 +113,15 @@ To reset branches to a specific commit state (dangerous):
 git reset --hard <commit-hash>
 ```
 Again, commit-hash can be retrieved with git log
+#### *Resetting a Branch on Origin*
+If you reset a branch locally to a specific commit, but also want the origin to be reset to that as well, you can do so like this:
+
+1. First, reset the branch locally to a specific commit.
+2. Then, you can reset the orign like so:
+```
+git push origin your-branch-name --force
+```
+**Make sure to know that doing such a thing will permanently delete all of the commits after the one you are resetting both the local and the origin branch to.**
 ### *Deleting Branches*
 ```
 # For a branch that has been merged
@@ -119,7 +130,14 @@ git branch -d branch_name
 # For a branch that has not been merged
 git branch -D branch_name
 ```
-## **Handling Gitignore Issues**
+# Managing Pull Requests
+With git, you can retreive a pull request and create a local branch that contains the changes of those pull request.
+```
+git fetch origin pull/PR_NUMBER/head:BRANCH_NAME
+```
+In this case, replace PR_NUMBER with the number of the pull request, and replace BRANCH_NAME with the new name of the branch where that pull request will be stored.
+
+# **Handling Gitignore Issues**
 If the gitignore file does not work/is not ignoring the files in the gitignore, it most likely means that those files are already being tracked by git. So, you need to remove the cached files from the git index:
 ```
 # Remove a single file from the Git index
