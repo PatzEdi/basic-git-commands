@@ -8,6 +8,7 @@
   - [**Commit Related Commands**](#commit-related-commands)
     - [*View Historical Commits/Actions*](#view-historical-commitsactions)
     - [*Switching to Older Commits (Creates a New Branch)*](#switching-to-older-commits-creates-a-new-branch)
+    - [*Interactive Rebase*](#interactive-rebase)
   - [**Branch Related Commands**](#branch-related-commands)
     - [*View Current Branches*](#view-current-branches)
     - [*Selecting/Switching Branches*](#selectingswitching-branches)
@@ -62,6 +63,21 @@ The above command will result in being in no branch. To save the commit to a new
 git checkout -b <new-branch-name> 
 ```
 The branch will contain that commit state. 
+### *Interactive Rebase*
+```
+git rebase -i <commit-hash>
+```
+The above command will open an editor in the terminal (e.g. nano), with a list of all the commits *after* the selected commit SHA.
+
+**The available commands to choose from will be listed in the open editor.**
+
+**Note:** *If anything goes wrong during the rebase, open a new terminal window (within the project directory) and execute this command below:*
+
+```
+git rebase --abort
+```
+Then, close the terminal that has the interactive rebase editor open.
+
 ## **Branch Related Commands**
 Branches can be used as different instances of the project. It can be useful if you want, for example, and alpha version, a main release version, and a beta version (example).
 ### *View Current Branches*
